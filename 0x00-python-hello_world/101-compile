@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Check if PYFILE environment variable is set
+if [ -z "$PYFILE" ]; then
+	echo "Error: PYFILE environment variable is not set."
+	exit 1
+fi
+
+# Compile the puthon file
+python3 -m py_compile "$PYFILE"
+
+# Extract the file name (excluding the extension)
+FILENAME=$(basename "$PYFILE" .py)
+
+# Find the compiled file and rename it
+COMPILED_FILE=$(find . -type f -name "*.pyc" | head -n 1)
+mv "$COMPILED_FILE" "${FILENAME}c.pyc"
+
+echo "Python file compiled successfully. Compiled file: $FILENAME.cpyc"
