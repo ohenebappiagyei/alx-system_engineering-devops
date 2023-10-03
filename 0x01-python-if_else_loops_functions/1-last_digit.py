@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 import random
 number = random.randint(-10000, 10000)
+
 last_digit = int(str(number)[-1])
-if number > 0:
-    last_digit = last_digit
-else:
+if number < 0:
     last_digit = -(last_digit)
+else:
+    last_digit = (last_digit)
 
 if last_digit > 5:
     result = "and is greater than 5"
