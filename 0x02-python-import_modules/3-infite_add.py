@@ -1,19 +1,14 @@
-#!/usr/bin/python
-
-from sys import argv
-
-
-def calculate_sum_of_arguments():
-    # Initialize the sum to 0
-    total_sum = 0
-
-    # Iterate through the arguments and a dd them to the total sum
-    for i in range(1, len(sys.argv)):
-        total_sum += int(sys.argv[i])
-
-    # Print the total sum
-    print("{}".format(total_sum))
-
+#!/usr/bin/python3
 
 if __name__ == "__main__":
-    calculate_sum_of_arguments()
+    from sys import argv
+    total_sum = 0
+
+    if len(argv) > 1:  # Check if there are arguments
+        for i in range(1, len(argv)):  # Start from index 1 to skip the script name
+            total_sum += int(argv[i])
+
+        print("{}".format(total_sum))
+    else:
+        print("0")
+
