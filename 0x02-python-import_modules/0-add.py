@@ -1,10 +1,10 @@
 #!/usr/bin/python3
+if __name__ = "__main__":
+	# Assigning variables
+	a = 1
+	b = 2
 
-# Assigning variables
-a = 1
-b = 2
+	# Import module
+	from add_0 import add
 
-# Import module
-from add_0 import add
-
-print("{:d} + {:d} = {:d}".format(a,b,(add(a, b))))
+	print("{:d} + {:d} = {:d}".format(a,b,(add(a, b))))
