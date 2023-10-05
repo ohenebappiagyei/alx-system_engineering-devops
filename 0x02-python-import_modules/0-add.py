@@ -7,4 +7,4 @@ b = 2
 # Import module
 from add_0 import add
 
-print("{} + {} = {}".format(a,b,(add(a, b))))
+print("{:d} + {:d} = {:d}".format(a,b,(add(a, b))))
