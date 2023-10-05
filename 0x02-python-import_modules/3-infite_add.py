@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import sys
+from sys import argv
 
 
 def calculate_sum_of_arguments():
@@ -11,7 +11,7 @@ def calculate_sum_of_arguments():
         total_sum += int(sys.argv[i])
 
     # Print the total sum
-    print(total_sum)
+    print("{}".format(total_sum))
 
 
 if __name__ == "__main__":
