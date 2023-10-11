@@ -47,4 +47,4 @@ void print_python_bytes(PyObject *p)
 
 	for (i = 0; i < length && i < 10; i++)
 		printf("%02x%c", (unsigned char)str[i], i < 9 ? ' ': '\n');
-
+}
