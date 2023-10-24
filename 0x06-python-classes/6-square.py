@@ -5,13 +5,10 @@
 class Square:
     """Represent a square."""
 
-    def __init__(self, size):
-        """Initialize a new square.
-
-        Args:
-            size (int): The size of the new square.
-        """
+    def __init__(self, size=0, position=(0, 0)):
+        """Initialize a new square."""
         self.size = size
+        self.position = position
 
     @property
     def size(self):
@@ -26,9 +23,24 @@ class Square:
             raise ValueError("size must be >= 0")
         self.__size = value
 
+    @property
+    def position(self):
+        """Retrieve the position of the square."""
+        return self.__position
+
+    @position.setter
+    def position(self, value):
+        """Set the position of the square with type and value validation."""
+        if not (isinstance(value, tuple) and
+                len(value) == 2 and
+                all(isinstance(num, int) and num >= 0 for num in value)):
+            raise TypeError("position must be a tuple of 2 positiove integers")
+        else:
+            self.__position = value
+
     def area(self):
         """Return the current area of the square."""
-        return (self.__size * self.__size)
+        return (self.__size * 2)
 
     def my_print(self):
         """Print the square with the # character."""
