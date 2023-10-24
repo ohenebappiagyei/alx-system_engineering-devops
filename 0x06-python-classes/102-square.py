@@ -1,12 +1,10 @@
 #!/usr/bin/python3
-"""
-    This class defines a square and provides methods to compute its area and perform comparisons."""
+"""Define a class Square."""
+
 
 class Square:
-   """ 
-    Attributes:
-        size (float or int): The size of the square's sides.
-    """
+    """Represent a sqaure"."""
+
 
     def __init__(self, size=0):
         """
