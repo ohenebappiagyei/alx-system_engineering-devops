@@ -1,16 +1,13 @@
-#!/usr/python3
-
 class Square:
     """Define a class Square that represents a square shape."""
 
     def __init__(self, size=0, position=(0, 0)):
         """
-        Initialize a Square object.
+        Initialize a new square.
 
         Args:
-            size (int): The size of the square's sides.
-            position (tuple): The position of the square.
-
+            size (int): The size of the new square.
+            position (tuple): The position of the new square.
         """
         self.size = size
         self.position = position
@@ -22,7 +19,8 @@ class Square:
 
     @size.setter
     def size(self, value):
-        """Set the size of the square and validate it.
+        """
+        Set the size of the square and validate it.
 
         Args:
             value (int): The size of the square's sides.
@@ -30,7 +28,6 @@ class Square:
         Raises:
             TypeError: If the size is not an integer.
             ValueError: If the size is less than 0.
-
         """
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
@@ -45,14 +42,14 @@ class Square:
 
     @position.setter
     def position(self, value):
-        """Set the position of the square and validate it.
+        """
+        Set the position of the square and validate it.
 
         Args:
             value (tuple): The position of the square.
 
         Raises:
             TypeError: If the position is not a tuple of 2 positive integers.
-
         """
         if (
             not isinstance(value, tuple) or
@@ -63,16 +60,16 @@ class Square:
         self.__position = value
 
     def area(self):
-        """Calculate the area of the square."""
+        """
+        Calculate and return the area of the square.
+
+        Returns:
+            int: The area of the square.
+        """
         return self.__size ** 2
 
     def my_print(self):
-        """Print the square with the specified size and position.
-
-        If size is equal to 0, print an empty line.
-        Position is used by adding space.
-
-        """
+        """Print the square using '#' character, respecting position."""
         if self.__size == 0:
             print()
         else:
@@ -82,7 +79,12 @@ class Square:
                 print(" " * self.__position[0] + "#" * self.__size)
 
     def __str__(self):
-        """Return a string representation of the square."""
+        """
+        Return a string representation of the square.
+
+        Returns:
+            str: The string representation of the square.
+        """
         square_str = ""
         if self.__size == 0:
             return square_str
