@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """
-This module defines the Rectangle class with private attributes, properties, methods for calculating area and perimeter, and  custom __str__ and __repr__ methods.
+This module defines the Rectangle class with private attributes,
+properties, methods for calculating area and perimeter,
+and  custom __str__ and __repr__ methods.
 """
 
 

@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 """
-This module defines the Rectangle class with private attributes, properties, methods for calculating area and perimeter, and  custom __str__ and __repr__ methods, and a custom __del__ method for deletion messages, and a class attribute for tracking the number of instances.
+This module defines the Rectangle class with private attributes,
+properties, methods for calculating area and perimeter,
+and  custom __str__ and __repr__ methods,
+and a custom __del__ method for deletion messages,
+and a class attribute for tracking the number of instances.
 """
 
 
@@ -8,8 +12,8 @@ class Rectangle:
     """
     A class that represents a rectangle.
     """
-    number_of_instances = 0 # Class attribute for tracking instances
-
+    # Class attribute for tracking instances
+    number_of_instances = 0
 
     def __init__(self, width=0, height=0):
         """
