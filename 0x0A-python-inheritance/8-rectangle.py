@@ -20,7 +20,7 @@ class Rectangle(BaseGeometry):
         __height (int): Private attribute for the height of the rectangle.
 
     Methods:
-        __init__(self, width, height): Initializes a Rectangle 
+        __init__(self, width, height): Initializes a Rectangle
         instance with width and height.
     """
 
