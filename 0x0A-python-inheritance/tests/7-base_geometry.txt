@@ -1,0 +1,36 @@
+Test Cases for BaseGeometry
+
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+>>> bg = BaseGeometry()
+
+>>> try:
+...     bg.area()
+... except Exception as e:
+...     "[{}] {}".format(e.__class__.__name__, e)
+'[Exception] area() is not implemented'
+
+>>> bg.integer_validator("positive_int", 42)
+
+>>> try:
+...     bg.integer_validator("zero_int", 0)
+... except Exception as e:
+...     "[{}] {}".format(e.__class__.__name__, e)
+'[ValueError] zero_int must be greater than 0'
+
+>>> try:
+...     bg.integer_validator("negative_int", -10)
+... except Exception as e:
+...     "[{}] {}".format(e.__class__.__name__, e)
+'[ValueError] negative_int must be greater than 0'
+
+>>> try:
+...     bg.integer_validator("float_value", 3.14)
+... except Exception as e:
+...     "[{}] {}".format(e.__class__.__name__, e)
+'[TypeError] float_value must be an integer'
+
+>>> try:
+...     bg.integer_validator("string_value", "string")
+... except Exception as e:
+...     "[{}] {}".format(e.__class__.__name__, e)
+'[TypeError] string_value must be an integer'
