@@ -14,7 +14,8 @@ class Square(Rectangle):
         size (int): Size of the square.
 
     Attributes:
-        __size (int): Private instance attribute to store the size of the square.
+        __size (int): Private instance attribute to store
+          the size of the square.
     """
 
     def __init__(self, size):
@@ -35,6 +36,8 @@ class Square(Rectangle):
         Returns a string representation of the Square.
 
         Returns:
-            str: A string describing the square in the format [Square] <size>/<size>.
+            str: A string describing the square in the format
+              [Square] <size>/<size>.
         """
-        return "[" + __class__.__name__ + "] " + str(self.__size) + "/" + str(self.__size)
+        return "[" + __class__.__name__ + "] " + str(self.__size) +
+    "/" + str(self.__size)
