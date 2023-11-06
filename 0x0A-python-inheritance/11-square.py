@@ -39,5 +39,4 @@ class Square(Rectangle):
             str: A string describing the square in the format
               [Square] <size>/<size>.
         """
-        return "[" + __class__.__name__ + "] " + str(self.__size) +
-    "/" + str(self.__size)
+        return "[" + __class__.__name__ + "] " + str(self.__size) + "/" + str(self.__size)
