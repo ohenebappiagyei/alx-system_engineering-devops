@@ -9,7 +9,7 @@ import json
 
 def load_from_json_file(filename):
     """ Load an object from a JSON file.
-    
+
     Args:
         filename (str): The name of the JSON file to read and deserialize.
 
