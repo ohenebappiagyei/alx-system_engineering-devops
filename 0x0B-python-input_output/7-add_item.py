@@ -1,6 +1,12 @@
 #!/usr/bin/python3
+"""
+This script adds all arguments to a Python list,
+and then save them to a file.
+"""
+
 import sys
 import os
+
 
 # Import your save_to_json_file and load_from_json_file functions
 save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
