@@ -1,35 +1,36 @@
 #!/usr/bin/python3
-"""
-    script that adds all arguments to a Python list,
-    and then save them to a file:
-
-    You must use your function save_to_json_file from
-    7-save_to_json_file.py
-    You must use your function load_from_json_file
-    from 8-load_from_json_file.py
-    The list must be saved as a JSON representation
-    in a file named add_item.json
-    If the file doesn’t exist, it should be created
-    You don’t need to manage file permissions / exceptions.
-"""
-
-
-import json
 import sys
-load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
+import os
+
+# Import your save_to_json_file and load_from_json_file functions
 save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
+load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 
-arg = sys.argv[1:]
-file_name = "add_item.json"
 
-try:
-    python_object = load_from_json_file(file_name)
-except FileNotFoundError:
-    save_to_json_file([], file_name)
+def add_item_to_list(item, filename):
+    """
+    Add an item to a list and save the list as a JSON representation in a file.
 
-python_object = load_from_json_file(file_name)
-if type(python_object) is list:
-    for item in arg:
-        python_object.append(item)
+    Args:
+        item (str): The item to be added to the list.
+        filename (str): The name of the file to save the list in.
 
-save_to_json_file(python_object, file_name)
+    The function loads the existing list from the file
+      if it exists or initializes an empty list if the file doesn't exist.
+    It appends the provided item to the list
+      and saves the updated list as a JSON representation in the file.
+
+    The function doesn't handle file permissions or exceptions.
+    """
+    # Initialize an empty list if the file doesn't exist
+    if not os.path.exists(filename):
+        item_list = []
+    else:
+        # Load the existing list from the file
+        item_list = load_from_json_file(filename)
+
+    # Add the command-line argument to the list
+    item_list.append(item)
+
+    # Save the updated list as a JSON representation in the file
+    save_to_json_file(item_list, filename)
