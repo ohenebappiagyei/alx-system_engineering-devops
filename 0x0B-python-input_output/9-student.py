@@ -13,7 +13,7 @@ class Student:
         age (int): The age of the student.
 
     Methods:
-        to_json(): Retrieves a dictionary representation of a Student instance.    
+        to_json(): Retrieves a dictionary representation of a Student instance.
     """
 
     def __init__(self, first_name, last_name, age):
