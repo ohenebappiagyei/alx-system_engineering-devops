@@ -3,6 +3,7 @@ import json
 """Module defining the Base class."""
 
 
+
 class Base:
     """The base class for all other classes in this project."""
 
