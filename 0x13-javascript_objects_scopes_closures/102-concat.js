@@ -14,11 +14,10 @@ try {
   const contentA = fs.readFileSync(fileAPath, 'utf-8');
   const contentB = fs.readFileSync(fileBPath, 'utf-8');
   const concatenatedContent = contentA + contentB;
-  
+
   fs.writeFileSync(fileCPath, concatenatedContent);
   console.log('Concatenation complete! Check fileC for the result.');
 } catch (error) {
   console.error('Error:', error.message);
   process.exit(1);
 }
-
