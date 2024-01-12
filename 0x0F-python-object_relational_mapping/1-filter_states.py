@@ -21,7 +21,9 @@ def filter_states(username, password, database):
     c = db.cursor()
 
     # Execute SQL query
-    c.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC")
+    c.execute(
+            "SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC"
+    )
 
     # Fetch all rows and print them
     for row in c.fetchall():
