@@ -18,17 +18,17 @@ def filter_states(username, password, database):
                          user=username, passwd=password, db=database)
 
     # Create a cursor object using cursor() method
-    cursor = db.cursor()
+    c = db.cursor()
 
     # Execute SQL query
-    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+    c.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC")
 
     # Fetch all rows and print them
-    for row in cursor.fetchall():
+    for row in c.fetchall():
         print(row)
 
     # Close the cursor and disconnect from server
-    cursor.close()
+    c.close()
     db.close()
 
 
