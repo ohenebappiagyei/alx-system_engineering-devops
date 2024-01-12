@@ -23,10 +23,10 @@ def filter_states(username, password, database, state_name):
 
     # Format the SQL query with the user input
     query = ("SELECT * FROM states "
-             "WHERE name = '{}' ORDER BY id ASC").format(state_name)
+             "WHERE name = %s ORDER BY id ASC")
 
     # Execute SQL query
-    c.execute(query)
+    c.execute(query, (state_name,))
 
     # Fetch all rows and print them
     for row in c.fetchall():
