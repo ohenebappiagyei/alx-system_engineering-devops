@@ -25,8 +25,11 @@ if __name__ == "__main__":
     # Create a Session
     session = Session()
 
+    # Placeholder
+    lik_a = State.name.like('%a%')
+
     # Query to get all State objects with a name containing the letter 'a'
-    states_to_delete = session.query(State).filter(State.name.like('%a%')).all()
+    states_to_delete = session.query(State).filter(lik_a).all()
 
     # Delete the State objects
     for state in states_to_delete:
