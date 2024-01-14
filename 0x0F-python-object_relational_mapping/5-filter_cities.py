@@ -1,14 +1,15 @@
 #!/usr/bin/python3
 """
-Script that lists all states from the database hbtn_0e_0_usa.
+Script that lists all cities from the database hbtn_0e_4_usa
 """
 
 import MySQLdb
 import sys
 
-def fetch_states(username, password, database, state_name):
+
+def filter_cities(username, password, database, state_name):
     """
-    Lists all states from the specified database that match the given state_name.
+    Lists all cities from the specified database that match the given state_name.
     """
     # Connect to MySQL server
     db = MySQLdb.connect(host="localhost", port=3306,
@@ -17,10 +18,13 @@ def fetch_states(username, password, database, state_name):
     # Create a cursor object using cursor() method
     cur = db.cursor()
 
+    # Format the SQL query with the user input
+    query = ("SELECT cities.name FROM cities "
+             "INNER JOIN states ON states.id=cities.state_id "
+             "WHERE states.name=%s ORDER BY cities.id ASC")
+
     # Execute SQL query with state_name as a parameter
-    cur.execute("""SELECT cities.name FROM
-                cities INNER JOIN states ON states.id=cities.state_id
-                WHERE states.name=%s""", (state_name,))
+    cur.execute(query, (state_name,))
 
     # Fetch all rows and print the results
     rows = cur.fetchall()
@@ -31,14 +35,15 @@ def fetch_states(username, password, database, state_name):
     cur.close()
     db.close()
 
+
 if __name__ == "__main__":
-    # Check if the correct number of arguments is provided
+    # Check if correct number of arguments provided
     if len(sys.argv) == 5:
         username = sys.argv[1]
         password = sys.argv[2]
         database = sys.argv[3]
         state_name = sys.argv[4]
-        fetch_states(username, password, database, state_name)
+        filter_cities(username, password, database, state_name)
     else:
         print("Usage: {} <username> <password> <database> <state_name>".format(sys.argv[0]))
 
