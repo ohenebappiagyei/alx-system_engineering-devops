@@ -1,5 +1,5 @@
 #USE haproxy -f /etc/haproxy/haproxy.cfg -db
-#TO LOOK FOR ERRORS IF SOMETHING IS WRONG
+#TO LOOK FOR ERRORS IF SOMETHING IS WRONG.
 global
         log /dev/log    local0
         log /dev/log    local1 notice
