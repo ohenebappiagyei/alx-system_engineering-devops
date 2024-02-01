@@ -1,33 +1,18 @@
 #!/usr/bin/env bash
+#returns all subdomains records and ips for a domain
 
-get_dns_info() {
-    local domain="$1"
-    local subdomain="$2"
-    local record_types=("A" "CNAME" "MX" "TXT")  # You can add more record types if needed
-
-    if [ -z "$subdomain" ]; then
-        subdomains=("www" "lb-01" "web-01" "web-02")
-    else
-        subdomains=("$subdomain")
-    fi
-
-    for sub in "${subdomains[@]}"; do
-        for type in "${record_types[@]}"; do
-            result=$(dig +short $sub.$domain $type)
-            if [ -n "$result" ]; then
-                echo "The subdomain $sub is a $type record and points to $result"
-            fi
-        done
+domain=$1
+function printing {
+    for var in "$@"
+    do
+            full_domain=$var.$1
+            dig "$full_domain" |\
+            awk -v var=$var '/ANSWER SECTION:/ {getline; print "The subdomain " var " is a " $4 " record and points to " $5}'
     done
 }
-
-# Check if both domain and subdomain parameters are provided
-if [ "$#" -eq 2 ]; then
-    get_dns_info "$1" "$2"
-elif [ "$#" -eq 1 ]; then
-    get_dns_info "$1"
-else
-    echo "Usage: $0 <domain> [subdomain]"
-    exit 1
+if [ $# == 1 ]; then
+    printing "$domain" www lb-01 web-01 web-02 
+elif [ $# == 2 ]; then
+    subdomain=$2
+    printing "$domain" "$subdomain"
 fi
-
