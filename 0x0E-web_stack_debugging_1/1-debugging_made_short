@@ -1,7 +1,5 @@
-#!/bin/bash
-cp /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-nginx -t
-nginx -g 'daemon on;'
-nginx -s reload
-service nginx restart
-
+#!/usr/bin/env bash
+#create link between both defaul files
+sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
+echo 1000 > /var/run/nginx.pid
