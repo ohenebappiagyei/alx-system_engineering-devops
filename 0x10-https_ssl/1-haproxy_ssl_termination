@@ -40,7 +40,7 @@ defaults
 
 frontend ALL
         bind *:80
-        bind *:443 ssl crt /etc/haproxy/certs/neuralfinances.tech.pem
+        bind *:443 ssl crt /etc/haproxy/certs/duxplus.tech.pem
         mode http
 
         acl is_letsencrypt path_beg -i /.well-known/acme-challenge/
@@ -52,8 +52,7 @@ frontend ALL
 
 backend www-backend
         balance roundrobin
-        server 1576-web-01 34.74.112.45:80 check
-        server 1576-web-02 35.237.185.184:80 check
-
+        server 460609-web-01 52.86.126.94 check
+        server 460609-web-02 54.236.16.172 check
 backend letsencrypt
-        server letsencrypt 127.0.0.1:8888
+        server letsencrypt 18.204.20.67
