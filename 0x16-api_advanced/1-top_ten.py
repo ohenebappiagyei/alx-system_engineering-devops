@@ -11,7 +11,7 @@ def top_ten(subreddit):
     If the subreddit is invalid, print None.
     """
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
-    headers = {'User-Agent': 'Dr. Appiagyei'}
+    headers = {'User-Agent': 'custom-agent'}
 
     try:
         response = requests.get(url, headers=headers, allow_redirects=False)
@@ -25,5 +25,5 @@ def top_ten(subreddit):
                 print(post['data']['title'])
         else:
             print(None)
-    except requests.RequestsException as e:
+    except requests.RequestException as e:
         print(None)
