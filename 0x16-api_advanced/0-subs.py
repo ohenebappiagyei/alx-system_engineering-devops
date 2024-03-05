@@ -11,7 +11,7 @@ def number_of_subscribers(subreddit):
     subreddit. If the subreddit is invalid, return 0.
     """
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {'User-Agent': 'custom-agent'}
+    headers = {'User-Agent': 'Dr. Appiagyei'}
 
     try:
         response = requests.get(url, headers=headers, allow_redirects=False)
