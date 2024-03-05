@@ -4,9 +4,11 @@
 """
 import requests
 
+
 def count_words(subreddit, word_list, after=None, count_dict=None):
     """
-    Recursively queries the Reddit API, parses the titles of all hot articles, and prints a sorted count of given keywords.
+    Recursively queries the Reddit API, parses the titles of all
+    hot articles, and prints a sorted count of given keywords.
     """
     if count_dict is None:
         count_dict = {}
@@ -16,7 +18,8 @@ def count_words(subreddit, word_list, after=None, count_dict=None):
     params = {'limit': 100, 'after': after}
 
     try:
-        response = requests.get(url, headers=headers, params=params, allow_redirects=False)
+        response = requests.get(url, headers=headers,
+                                params=params, allow_redirects=False)
         if response.status_code == 200:
             data = response.json().get('data', {})
             children = data.get('children', [])
@@ -27,7 +30,8 @@ def count_words(subreddit, word_list, after=None, count_dict=None):
                 for word in word_list:
                     word_lower = word.lower()
                     if word_lower in title:
-                        count_dict[word_lower] = count_dict.get(word_lower, 0) + title.count(word_lower)
+                        count_dict[word_lower] = count_dict.get(
+                            word_lower, 0) + title.count(word_lower)
 
             after = data.get('after')
             if after is not None:
@@ -37,20 +41,15 @@ def count_words(subreddit, word_list, after=None, count_dict=None):
         else:
             print_results(count_dict)
     except requests.RequestException as e:
-        print_results(count_dict)
+        rint_results(count_dict)
+
 
 def print_results(count_dict):
     """
-    Prints the results in descending order by count and alphabetically for equal counts.
+    Prints the results in descending order by count and alphabetically
+    for equal counts.
     """
     sorted_counts = sorted(count_dict.items(), key=lambda x: (-x[1], x[0]))
 
     for word, count in sorted_counts:
         print(f"{word}: {count}")
-
-# Example of usage
-if __name__ == '__main__':
-    subreddit_name = "python"
-    keywords = ["python", "java", "javascript"]
-    count_words(subreddit_name, keywords)
-
